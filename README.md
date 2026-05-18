@@ -102,6 +102,18 @@ sudo systemctl reload nginx
 - `SERVER_SSH_KEY` - приватный SSH ключ из файла `github-actions-fastapi-lab`
 - `SERVER_PORT` - SSH порт, обычно `22`
 
+Пользователю, под которым GitHub Actions подключается к серверу, нужно разрешить перезапуск сервиса без ввода пароля:
+
+```bash
+sudo visudo
+```
+
+Добавь строку, заменив `ubuntu` на своего пользователя, если он другой:
+
+```text
+ubuntu ALL=NOPASSWD: /bin/systemctl restart fastapi-ci-cd-lab
+```
+
 ### 8. Проверить CI/CD
 
 Внеси любое изменение, затем:
@@ -121,4 +133,3 @@ sudo systemctl status fastapi-ci-cd-lab
 sudo journalctl -u fastapi-ci-cd-lab -f
 curl http://127.0.0.1:8000/health
 ```
-
