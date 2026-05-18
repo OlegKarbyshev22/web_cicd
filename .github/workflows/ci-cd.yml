@@ -25,6 +25,8 @@ jobs:
           pip install -r requirements-dev.txt
 
       - name: Run pytest
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: pytest -q
 
   deploy:
@@ -49,4 +51,3 @@ jobs:
             pip install --upgrade pip
             pip install -r requirements.txt
             sudo systemctl restart fastapi-ci-cd-lab
-
