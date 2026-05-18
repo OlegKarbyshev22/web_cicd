@@ -6,4 +6,7 @@ venv/
 .env
 .coverage
 htmlcov/
-
+github-actions-fastapi-lab
+github-actions-fastapi-lab.pub
+*.pem
+*.key
