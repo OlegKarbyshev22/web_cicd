@@ -1,0 +1,16 @@
+[Unit]
+Description=FastAPI CI/CD Lab
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/fastapi-ci-cd-lab
+Environment="PATH=/opt/fastapi-ci-cd-lab/.venv/bin"
+ExecStart=/opt/fastapi-ci-cd-lab/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
